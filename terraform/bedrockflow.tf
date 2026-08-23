@@ -63,6 +63,7 @@ resource "aws_bedrockagent_flow" "company-email-router" {
         }
       }
     }
+    
 
     # 3. Condition: is_complaint -> complaint response prompt
     connection {
@@ -146,9 +147,13 @@ resource "aws_bedrockagent_flow" "company-email-router" {
         prompt {
           source_configuration {
             resource {
-            
-              prompt_arn = aws_bedrockagent_prompt.companyemailclassifier.arn
+              prompt_arn = aws_bedrockagent_prompt.email_prompts["classifier"].arn
             }
+          }
+
+          guardrail_configuration {
+            guardrail_identifier = aws_bedrock_guardrail.email_router_guardrail.guardrail_arn
+            guardrail_version    = aws_bedrock_guardrail.email_router_guardrail.version
           }
         }
       }
@@ -196,7 +201,7 @@ resource "aws_bedrockagent_flow" "company-email-router" {
         prompt {
           source_configuration {
             resource {
-              prompt_arn = aws_bedrockagent_prompt.companycomplaintprompt.arn
+              prompt_arn = aws_bedrockagent_prompt.email_prompts["complaint"].arn
             }
           }
         }
@@ -222,7 +227,7 @@ resource "aws_bedrockagent_flow" "company-email-router" {
         prompt {
           source_configuration {
             resource {
-              prompt_arn = aws_bedrockagent_prompt.companygeneralprompt.arn
+              prompt_arn = aws_bedrockagent_prompt.email_prompts["general"].arn
             }
           }
         }
