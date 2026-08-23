@@ -5,7 +5,7 @@ resource "aws_bedrockagent_prompt" "companyemailclassifier" {
 
   variant {
     name     = "Variant1"
-    model_id = "us.amazon.nova-2-lite-v1:0"
+    model_id = "global.amazon.nova-2-lite-v1:0"
 
     inference_configuration {
       text {
@@ -38,7 +38,7 @@ resource "aws_bedrockagent_prompt" "companygeneralprompt" {
 
   variant {
     name     = "Variant1"
-    model_id = "us.amazon.nova-2-lite-v1:0"
+    model_id = "global.amazon.nova-2-lite-v1:0"
 
     inference_configuration {
       text {
@@ -67,7 +67,7 @@ resource "aws_bedrockagent_prompt" "companycomplaintprompt" {
 
   variant {
     name     = "Variant1"
-    model_id = "us.amazon.nova-2-lite-v1:0"
+    model_id = "global.amazon.nova-2-lite-v1:0"
 
     inference_configuration {
       text {

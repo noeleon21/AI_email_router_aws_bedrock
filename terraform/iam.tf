@@ -36,7 +36,10 @@ resource "aws_iam_role_policy" "bedrock_flow_permissions" {
         Effect = "Allow"
         Action = ["bedrock:InvokeModel", "bedrock:InvokeModelWithResponseStream"]
         Resource = [
-          "arn:aws:bedrock:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:inference-profile/us.amazon.nova-2-lite-v1:0"
+            "arn:aws:bedrock:${data.aws_region.current.region}:${data.aws_caller_identity.current.account_id}:inference-profile/global.amazon.nova-2-lite-v1:0",
+           "arn:aws:bedrock:${data.aws_region.current.region}::foundation-model/amazon.nova-2-lite-v1:0",
+           "arn:aws:bedrock:::foundation-model/amazon.nova-2-lite-v1:0"
+          
         ]
       },
       {
